@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.event.ActionEvent;
+import org.springframework.stereotype.Controller;
 import pe.edu.upeu.tictactoe.modelo.ResultadoTicTacToe;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Controller
 public class TicfxControl {
 
     @FXML
@@ -103,7 +104,7 @@ public class TicfxControl {
         labelTurno.setText("-");
         labelPuntajeJugador1.setText("0");
         labelPuntajeJugador2.setText("0");
-        labelResultado.setText(""); // Inicializa el label de resultado
+        //labelResultado.setText(" "); // Inicializa el label de resultado
         btnAnular.setDisable(true);
     }
 
@@ -114,7 +115,7 @@ public class TicfxControl {
             btnIniciar.setDisable(true);
             btnAnular.setDisable(false);
             tableroGrid.setDisable(false);
-            labelResultado.setText("");
+            //labelResultado.setText(" ");
             nombreJugador1 = txtNombreJugador1.getText();
             nombreJugador2 = txtNombreJugador2.getText();
             jugadorActual = jugador1Simbolo;
@@ -151,7 +152,7 @@ public class TicfxControl {
 
                 if (verificarGanador()) {
                     String ganador = (jugadorActual.equals(jugador1Simbolo)) ? nombreJugador1 : nombreJugador2;
-                    labelResultado.setText("¡Ganador: " + ganador + "!");
+                    //labelResultado.setText("¡Ganador: " + ganador + "!");
                     if (jugadorActual.equals(jugador1Simbolo)) {
                         puntajeJugador1++;
                         actualizarResultadoPartida(ganador, 1);
@@ -165,7 +166,7 @@ public class TicfxControl {
                     btnAnular.setDisable(true);
                     deshabilitarTablero();
                 } else if (tableroLleno()) {
-                    labelResultado.setText("¡Empate!");
+                    //labelResultado.setText("¡Empate!");
                     actualizarResultadoPartida("Empate", 0);
                     juegoActivo = false;
                     btnIniciar.setDisable(false);
@@ -186,7 +187,7 @@ public class TicfxControl {
             btnIniciar.setDisable(false);
             btnAnular.setDisable(true);
             tableroGrid.setDisable(true);
-            labelResultado.setText("Partida Anulada");
+            //labelResultado.setText("Partida Anulada");
             actualizarEstadoPartida("Anulado");
             limpiarTablero();
             deshabilitarTablero();

@@ -31,7 +31,7 @@ public class TicTacToeApplication extends Application {
 		builder.application().setWebApplicationType(WebApplicationType.NONE);
 		configurableApplicationContext =
 				builder.run(getParameters().getRaw().toArray(new String[0]));
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/calcfx.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/tic_tac_toe.fxml"));
 
 		fxmlLoader.setControllerFactory(configurableApplicationContext::getBean);
 		parent= fxmlLoader.load();
