@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pe.edu.upeu.calcfx.modelo.CalCTO;
+import pe.edu.upeu.calcfx.servicio.CalcRepoSql;
 import pe.edu.upeu.calcfx.servicio.CalcServicioI;
 
 import javax.swing.*;
@@ -42,6 +43,9 @@ public class CalcfxControl {
 
     int indexID=-1;
     int idx=0;
+
+    @Autowired
+    CalcRepoSql calcRepoSql;
 
     private double num1 = 0;
     private String operador = "";
@@ -148,6 +152,7 @@ public class CalcfxControl {
                 if(indexID!=-1){
                     servicioI.update(to, indexID);
                 }else{
+                    calcRepoSql.guardarCliente(to);
                     servicioI.save(to);
                 }
 
@@ -185,12 +190,13 @@ public class CalcfxControl {
         num2x.setCellFactory(TextFieldTableCell.<CalCTO>forTableColumn());
 
         operp.setCellValueFactory(new PropertyValueFactory<CalCTO, Character>("operador"));
-        operp.setCellFactory(ComboBoxTableCell.<CalCTO, Character>forTableColumn('+', '-','/','*'));
+        operp.setCellFactory(ComboBoxTableCell.<CalCTO, Character>forTableColumn('+',  '-' , '/' , '*'));
 
         addActionButtonsToTable();
         resultx.setCellValueFactory(new PropertyValueFactory<CalCTO,String>("num1"));
         resultx.setCellFactory(TextFieldTableCell.<CalCTO>forTableColumn());
-        datos = FXCollections.observableArrayList(listar);
+        //datos = FXCollections.observableArrayList(listar);
+        datos = FXCollections.observableArrayList(calcRepoSql.listarEntidad());
         tableView.setItems(datos);
 
     }

@@ -1,7 +1,17 @@
 package pe.edu.upeu.calcfx.modelo;
 
 public class CalCTO {
-   String num1;
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    String num1;
    String num2;
    char operador;
 
