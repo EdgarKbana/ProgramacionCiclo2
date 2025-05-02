@@ -150,10 +150,11 @@ public class CalcfxControl {
                 to.setOperador(operador.charAt(0));
                 to.setResultado(String.valueOf(resultado));
                 if(indexID!=-1){
-                    servicioI.update(to, indexID);
+                    calcRepoSql.actualizarEntidad(to, indexID);
+                    //servicioI.update(to, indexID);
                 }else{
                     calcRepoSql.guardarCliente(to);
-                    servicioI.save(to);
+                    //servicioI.save(to);
                 }
 
                 num1 = resultado; // Para encadenar operaciones
@@ -193,7 +194,7 @@ public class CalcfxControl {
         operp.setCellFactory(ComboBoxTableCell.<CalCTO, Character>forTableColumn('+',  '-' , '/' , '*'));
 
         addActionButtonsToTable();
-        resultx.setCellValueFactory(new PropertyValueFactory<CalCTO,String>("num1"));
+        resultx.setCellValueFactory(new PropertyValueFactory<CalCTO,String>("resultado"));
         resultx.setCellFactory(TextFieldTableCell.<CalCTO>forTableColumn());
         //datos = FXCollections.observableArrayList(listar);
         datos = FXCollections.observableArrayList(calcRepoSql.listarEntidad());
@@ -247,7 +248,7 @@ public class CalcfxControl {
                 deleteButton.getStyleClass().setAll("btn", "btn-danger");
                 deleteButton.setOnAction(event -> {
                     CalCTO cal = getTableView().getItems().get(getIndex());
-                    //deleteOperCalc(cal); getIndex());
+                    deleteOperCalc(cal); getIndex();
                 });
             }
             @Override
@@ -266,10 +267,13 @@ public class CalcfxControl {
     }
     public void editOperCalc(CalCTO to, int index){
         txtResultado.setText(String.valueOf(to.getNum1()+" "+to.getOperador()+" "+to.getNum2()));
+        System.out.println(index);
         indexID=index;
     }
 
     public void deleteOperCalc(CalCTO to){
         servicioI.delete(to);
+        calcRepoSql.eliminarEntidad(to);
+        listar();
     }
 }

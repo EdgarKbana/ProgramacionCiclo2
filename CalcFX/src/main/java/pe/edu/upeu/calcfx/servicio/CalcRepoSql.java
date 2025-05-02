@@ -27,6 +27,7 @@ public class CalcRepoSql {
                 calCTO.setNum2(rs.getString("num2"));
                 calCTO.setOperador(rs.getString("operador").charAt(0));
                 calCTO.setResultado(rs.getString("resultado"));
+                calCTO.setId(rs.getInt("id"));
                 lista.add(calCTO);
             }
         } catch (Exception e) {
@@ -59,4 +60,27 @@ public class CalcRepoSql {
         return result;
     }
 
+    public boolean eliminarEntidad(CalCTO c) {
+        int result=0;
+        try {
+            ps=connection.prepareStatement("DELETE FROM calculadora WHERE id="+c.getId());
+            result= ps.executeUpdate();
+
+        }catch (Exception e) {
+            System.err.println("Error: "+e.getMessage());
+        }
+        return result==1;
+    }
+    public boolean actualizarEntidad(CalCTO c, int id) {
+        int result=0;
+        try {
+            ps=connection.prepareStatement("update calculadora set num1="+c.getNum1()+
+                    ", num2="+c.getNum2()+",operador='"+c.getOperador()+
+                    "',resultado="+c.getResultado()+" where id="+id);
+                    result=ps.executeUpdate();
+        }catch (Exception e) {
+            System.err.println("Error: "+e.getMessage());
+        }
+        return result==1;
+    }
 }
