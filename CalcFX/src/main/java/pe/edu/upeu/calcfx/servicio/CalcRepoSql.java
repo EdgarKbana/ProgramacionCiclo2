@@ -25,16 +25,16 @@ public class CalcRepoSql {
                 CalCTO calCTO = new CalCTO();
                 calCTO.setNum1(rs.getString("num1"));
                 calCTO.setNum2(rs.getString("num2"));
-                calCTO.setOperador(rs.getString("operador").charAt(0));
+                calCTO.setOperador(String.valueOf(rs.getString("operador").charAt(0)));
                 calCTO.setResultado(rs.getString("resultado"));
-                calCTO.setId(rs.getInt("id"));
+                calCTO.setId((long) rs.getInt("id"));
                 lista.add(calCTO);
             }
         } catch (Exception e) {
         }
         return lista;
     }
-    public int maxId() {
+    public long maxId() {
         int i=0;
         try {
             ps = connection.prepareStatement("SELECT (max(id)+1) as idx from calculadora ");

@@ -9,10 +9,10 @@ public interface CalcServicioI {
     public void save(CalCTO calCTO);
     //R
     public List<CalCTO> findAll();
-    public CalCTO findById(int index);
+    public CalCTO findById(Long index);
     //U
-    public void update(CalCTO calCTO, int index);
+    public void update(CalCTO calCTO, Long index);
     //O
     public void delete(CalCTO calCTO);
-    public void deleteById(int index);
+    public void deleteById(Long index);
 }

@@ -147,14 +147,13 @@ public class CalcfxControl {
                 CalCTO to = new CalCTO();
                 to.setNum1(String.valueOf(num1));
                 to.setNum2(String.valueOf(num2));
-                to.setOperador(operador.charAt(0));
+                to.setOperador(String.valueOf(operador.charAt(0)));
                 to.setResultado(String.valueOf(resultado));
                 if(indexID!=-1){
-                    calcRepoSql.actualizarEntidad(to, indexID);
-                    //servicioI.update(to, indexID);
+                    servicioI.update(to, Long.valueOf(indexID));
                 }else{
-                    calcRepoSql.guardarCliente(to);
-                    //servicioI.save(to);
+
+                    servicioI.save(to);
                 }
 
                 num1 = resultado; // Para encadenar operaciones

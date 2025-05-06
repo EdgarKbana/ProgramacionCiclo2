@@ -1,7 +1,9 @@
 package pe.edu.upeu.calcfx.servicio;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.calcfx.modelo.CalCTO;
+import pe.edu.upeu.calcfx.repositorio.CalcRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,35 +11,37 @@ import java.util.List;
 
 public class CalcServicioImp implements CalcServicioI{
 
-    List<CalCTO> datos=new ArrayList<>();
+   @Autowired
+    private CalcRepository calcRepository;
 
     @Override
     public void save(CalCTO calCTO) {
-       datos.add(calCTO);
+        calcRepository.save(calCTO);
     }
 
     @Override
     public List<CalCTO> findAll() {
-        return datos;
+        return calcRepository.findAll();
     }
 
     @Override
-    public CalCTO findById(int index) {
-        return datos.get(index);
+    public CalCTO findById(Long index) {
+        return calcRepository.findById(index).orElse(new CalCTO());
     }
 
     @Override
-    public void update(CalCTO calCTO, int index) {
-        datos.remove(calCTO);
+    public void update(CalCTO calCTO, Long index) {
+        calCTO.setId(index);
+        calcRepository.save(calCTO);
     }
 
     @Override
     public void delete(CalCTO calCTO) {
-        datos.remove(calCTO);
+        calcRepository.delete(calCTO);
     }
 
     @Override
-    public void deleteById(int index) {
-        datos.remove(index);
+    public void deleteById(Long index) {
+        calcRepository.deleteById(index);
     }
 }
