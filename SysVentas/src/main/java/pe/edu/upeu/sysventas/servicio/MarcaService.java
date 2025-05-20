@@ -12,23 +12,13 @@ public class MarcaService {
     @Autowired
     private MarcaRepository marcaRepository;
     // Create
-    public Marca guardarEntidad(Marca to) {
-        return marcaRepository.save(to);
-    }
+    public Marca guardarEntidad(Marca to) {return marcaRepository.save(to);}
     // Report
-    public List<Marca> listarEntidad() {
-        return marcaRepository.findAll();
-    }
+    public List<Marca> listarEntidad() {return marcaRepository.findAll();}
     // Update
-    public Marca actualizarEntidad(Marca to) {
-        return marcaRepository.save(to);
-    }
+    public Marca actualizarEntidad(Marca to) {return marcaRepository.save(to);}
     // Delete
-    public void eliminarRegEntidad(Long id) {
-        marcaRepository.deleteById(id);
-    }
+    public void eliminarRegEntidad(Long id) {marcaRepository.deleteById(id);}
     // Buscar por ID
-    public Marca buscarEntidad(Long id) {
-        return marcaRepository.findById(id).orElse(null);
-    }
+    public Marca buscarEntidad(Long id) {return marcaRepository.findById(id).orElse(null);}
 }

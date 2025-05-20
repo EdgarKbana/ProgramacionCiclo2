@@ -2,7 +2,6 @@ package pe.edu.upeu.sysventas.modelo;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.BatchSize;
 
 @Data
 @Entity
@@ -13,8 +12,8 @@ public class Perfil {
     @Basic(optional = false)
     @Column(name = "id_perfil", nullable = false)
     private Long idPerfil;
-    //@BatchSize(max = 20)
+    //@Size(max = 20)
     private String nombre;
-    //@BatchSize(max = 6)
+    //@Size(max = 6)
     private String codigo;
 }

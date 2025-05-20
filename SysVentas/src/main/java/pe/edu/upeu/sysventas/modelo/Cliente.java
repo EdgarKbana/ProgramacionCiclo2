@@ -26,3 +26,4 @@ public class Cliente {
     @Column(name = "tipo_documento", nullable = false, length = 12)
     private String tipoDocumento;
 }
+

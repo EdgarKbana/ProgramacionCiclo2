@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Data
 @Entity
 @Table(name = "upeu_usuario")
@@ -28,3 +27,4 @@ public class Usuario {
     @ManyToOne(optional = false)
     private Perfil idPerfil;
 }
+

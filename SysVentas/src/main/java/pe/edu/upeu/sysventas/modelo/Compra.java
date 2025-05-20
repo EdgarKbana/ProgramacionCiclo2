@@ -6,9 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,14 +40,14 @@ public class Compra {
     private String numDoc;
     //@JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    @Column(name = "fecha_comp", nullable = false)
-    private LocalDate fechaComp;
-    @Column(name = "tipo_doc", nullable = false, length = 12)
+    //@Column(name = "fecha_comp", nullable = false)
+    //private LocalDate fechaComp;
+    //@Column(name = "tipo_doc", nullable = false, length = 12)
     private String tipoDoc;
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "fecha_reg", nullable = false)
-    private LocalDateTime fechaReg;
-    //@OneToMany(mappedBy = "compra", cascade = CascadeType.ALL,
-            //orphanRemoval = true)
+    //@Column(name = "fecha_reg", nullable = false)
+    //private LocalDateTime fechaReg;
+   // @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL,orphanRemoval = true)
     //private List<CompraDetalle> compraDetalles;
 }
+

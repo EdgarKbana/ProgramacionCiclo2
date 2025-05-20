@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Data
 @Entity
 @Table(name = "upeu_vent_carrito")
@@ -37,3 +36,4 @@ public class CarritoVenta {
     @JoinColumn(name = "id_usuario", nullable = false)
     public Usuario usuario;
 }
+

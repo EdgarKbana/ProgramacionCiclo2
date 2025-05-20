@@ -37,3 +37,5 @@ public class CarritoCompra {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 }
+
+

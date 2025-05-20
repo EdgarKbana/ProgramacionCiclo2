@@ -5,13 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.BatchSize;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Data
 @Entity
 @Table(name = "upeu_producto")
@@ -21,7 +18,7 @@ public class Producto {
     @Column(name = "id_producto")
     private Long idProducto;
     //@NotNull(message = "El nombre no puede estar vacío")
-    //@BatchSize(min = 2, max = 120, message = "El nombre debe tener entre 2 y 120 caracteres")
+    //@Size(min = 2, max = 120, message = "El nombre debe tener entre 2 y 120 caracteres")
             @Column(name = "nombre", nullable = false, length = 120)
     private String nombre;
     //@Positive(message = "El Precio Unitario debe ser positivo")
@@ -30,7 +27,7 @@ public class Producto {
     //@PositiveOrZero(message = "El Precio Unitario Anterior debe ser positivo o cero")
             @Column(name = "puold", nullable = false)
             private Double puOld;
-            //@Positive(message = "La utilidad debe ser positiva")
+    //@Positive(message = "La utilidad debe ser positiva")
             @Column(name = "utilidad", nullable = false)
     private Double utilidad;
     //@Positive(message = "El Stock debe ser positivo o cero")
