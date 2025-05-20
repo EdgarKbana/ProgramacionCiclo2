@@ -23,4 +23,7 @@ public class UsuarioService {
     public void eliminarRegEntidad(Long id) {usuarioRepository.deleteById(id);}
     // Buscar por ID
     public Usuario buscarEntidad(Long id) {return usuarioRepository.findById(id).orElse(null);}
+    public Usuario loginUsuario(String user, String clave) {return usuarioRepository.loginUsuario(user, clave);
+    }
+
 }
